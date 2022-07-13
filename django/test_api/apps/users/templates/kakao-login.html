@@ -1,0 +1,16 @@
+{% block content %}
+{% csrf_token %}
+<img src="https://d2lebzsjtoy2av.cloudfront.net/intro-b.png" style="display:block; margin-left:auto; margin-right:auto; width:70%; margin-top:40vh;">
+<div style="text-align:center; margin-top:3vh; padding: 0 10vw 0 10vw; line-height:1.5; font-size: 2.5rem;">
+    <div style="color: rgb(55, 53, 47);">티랩 골프 앱으로 이동 중입니다.</div>
+    <div><a href="tlab://auth/data?credential={{credential}}&name={{name}}&email={{email}}" style="user-select: none; cursor: pointer; color: rgba(55, 53, 47, 0.5);">앱으로 자동으로 이동하지 않은 경우 여기를 클릭하세요.</a></div>
+</div>
+{% if error %}
+    <script>alert(`{{ error }}`)</script>
+{% endif %}
+<script>
+    url = `tlab://auth/data?credential={{credential}}&name={{name}}&email={{email}}`
+    console.log(url)
+    location.replace(url)
+</script>
+{% endblock %}
